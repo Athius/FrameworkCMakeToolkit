@@ -11,10 +11,8 @@ macro(SUBDIRLIST result curdir)
   set(${result} ${dirlist})
 endmacro()
 
-SUBDIRLIST(SUBDIRS ".")
-
-message(STATUS "${SUBDIRS}")
+SUBDIRLIST(SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}")
 
 foreach(subdir ${SUBDIRS})
-  add_subdirectory(${subdir})
+    add_subdirectory(${subdir})
 endforeach(subdir ${SUBDIRS})

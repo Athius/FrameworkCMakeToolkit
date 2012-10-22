@@ -9,6 +9,7 @@
 #define TESTSUM_HPP_
 
 #include <iostream>
+#include <Sum.hpp>
 
 namespace projectB {
 

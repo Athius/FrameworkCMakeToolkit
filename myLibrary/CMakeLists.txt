@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(myLibrary CXX)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE STRING "Include dir for myLibrary")
+set(MYLIBRARY_SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src CACHE STRING "Source dir for myLibrary")
+
+include_directories(${MYLIBRARY_INCLUDE_DIRS})
 
 file(GLOB_RECURSE header_files
      include/*.hpp)
@@ -12,11 +15,12 @@ file(GLOB_RECURSE source_files
      
 add_library(${PROJECT_NAME} STATIC ${source_files})
 
-set_target_properties(${PROJECT_NAME} PROPERTIES ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY} ${CMAKE_BINARY_DIR}/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE})
+set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}"
+                                                 ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}")
 
 install(TARGETS ${PROJECT_NAME}
         LIBRARY
-        DESTINATION "myLibrary"
+        ARCHIVE DESTINATION "lib"
         COMPONENT libraries)
         
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
