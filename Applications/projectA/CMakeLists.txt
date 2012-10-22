@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+project(projectA CXX)
+
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/CMake")
+
+find_package(myLibrary REQUIRED)
+
+include_directories(${CMAKE_SOURCE_DIR}/include ${MYLIBRARY_INCLUDE_DIRS})
+
+file(GLOB_RECURSE header_files
+     ${CMAKE_SOURCE_DIR}/include/*.hpp)
+     
+file(GLOB_RECURSE source_files
+     ${CMAKE_SOURCE_DIR}/src/*.cpp)
+     
+add_executable(${PROJECT_NAME} ${source_files})
+target_link_libraries(${PROJECT_NAME} ${MYLIBRARY_LIBRARY_NAMES})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES ${EXECUTABLE_OUTPUT_PATH} ${CMAKE_BINARY_DIR}/bin/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE})
+
+install(PROGRAMS ${PROJECT_NAME}
+        DESTINATION "Applications/${PROJECT_NAME}"
+        COMPONENT program)
+        
+set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
+set(CPACK_PACKAGE_VENDOR "Romain LEGUAY")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Example test framework: application ${PROJECT_NAME}")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "0")
+set(CPACK_PACKAGE_VERSION_PATCH "0")
+set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
+set(CPACK_SOURCE_IGNORE_FILES "/bin/;/.svn/;/.git/;${CPACK_SOURCE_IGNORE_FILES}")
+
+set(CPACK_COMPONENTS_ALL "program")
+
+include(CPack)        
