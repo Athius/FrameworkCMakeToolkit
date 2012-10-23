@@ -2,11 +2,6 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(myLibrary CXX)
 
-set(${PROJECT_NAME}_VERSION_MAJOR 1)
-set(${PROJECT_NAME}_VERSION_MINOR 0)
-set(${PROJECT_NAME}_VERSION_PATCH 0)
-set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}") 
-
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/CMake" FORCE)
 
 set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE STRING "Include dir for myLibrary")
@@ -37,6 +32,8 @@ install(FILES ${header_files}
 set(COMPONENT_NAMES libraries library_headers)
 
 include(Package)
+
+set_project_version(1 0 0)
 
 try_build_package()
 

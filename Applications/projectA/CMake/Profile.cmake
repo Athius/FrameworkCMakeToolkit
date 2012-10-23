@@ -54,11 +54,7 @@ function(try_build_profile)
     add_custom_command(OUTPUT ${GMON_OUT}
       COMMAND ${APPLICATION_BIN} ${APPLICATION_PARAMETERS}
       DEPENDS ${PROJECT_NAME})
-    
-    message(STATUS "${GPROF_FILE}")
-    
-    message(STATUS "${GPROF2DOT_FILE}")
-    
+        
     # Rule for generating file profile.txt, run gprof on gmon.out
     add_custom_command(OUTPUT ${PROFILE_TXT}
       COMMAND ${GPROF_EXECUTABLE} -z ${APPLICATION_BIN} > ${PROFILE_TXT}
