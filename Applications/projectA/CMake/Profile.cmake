@@ -34,8 +34,7 @@ function(try_build_profile)
     find_package(Gprof2Dot REQUIRED)
 
     # Cache variables that setting generation of the graphic for the profiling 
-    file(MAKE_DIRECTORY PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile" 
-      CACHE STRING "Output directory for profiling file generated")
+   file(MAKE_DIRECTORY PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
    
    set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
    
