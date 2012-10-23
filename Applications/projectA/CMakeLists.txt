@@ -27,7 +27,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMA
 
 install(TARGETS ${PROJECT_NAME}
         DESTINATION "Applications/${PROJECT_NAME}"
-        COMPONENT ${PROJECT_NAME})
+        COMPONENT application)
         
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set(CPACK_PACKAGE_VENDOR "Romain LEGUAY")
@@ -40,6 +40,8 @@ set(CPACK_SOURCE_IGNORE_FILES "/.svn/;/.git/;${CPACK_SOURCE_IGNORE_FILES}")
 
 #set(CPACK_COMPONENTS_ALL "program")
 
+set(CPACK_INSTALL_CMAKE_PROJECTS "${CMAKE_CURRENT_DIRECTORY_DIR};${PROJECT_NAME};application;/")
+
 set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake")
 set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackSourceConfig.cmake")
 
@@ -47,6 +49,3 @@ add_custom_target(${PROJECT_NAME}-package "cpack" "--config" "${CPACK_OUTPUT_CON
 add_custom_target(${PROJECT_NAME}-package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
 
 include(CPack)
-
-cpack_add_component(${PROJECT_NAME}
-                    DISPLAY_NAME "${PROJECT_NAME}")
