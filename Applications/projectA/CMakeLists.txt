@@ -25,27 +25,21 @@ endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}")
 
+
 install(TARGETS ${PROJECT_NAME}
         DESTINATION "Applications/${PROJECT_NAME}"
-        COMPONENT application)
+        COMPONENT application-${PROJECT_NAME})
 
-set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
-set(CPACK_PACKAGE_VENDOR "Romain LEGUAY")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Example test framework: application ${PROJECT_NAME}")
-set(CPACK_PACKAGE_VERSION_MAJOR "1")
-set(CPACK_PACKAGE_VERSION_MINOR "0")
-set(CPACK_PACKAGE_VERSION_PATCH "0")
-set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
-set(CPACK_SOURCE_IGNORE_FILES "/bin/;/.svn/;/.git/;${CPACK_SOURCE_IGNORE_FILES};/.project/.cproject/CMakeFiles/;")
+set(COMPONENT_NAMES application-${PROJECT_NAME})
+        
+include(Package)
 
-set(CPACK_COMPONENTS_ALL "")
+try_build_package()
 
-set(CPACK_INSTALL_CMAKE_PROJECTS "${CMAKE_CURRENT_DIRECTORY_DIR};${PROJECT_NAME};application;/")
+include(Documentation)
 
-set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake")
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackSourceConfig.cmake")
+try_build_documentation()
 
-add_custom_target(${PROJECT_NAME}-package "cpack" "--config" "${CPACK_OUTPUT_CONFIG_FILE}")
-add_custom_target(${PROJECT_NAME}-package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
+include(Profile)
 
-include(CPack)
+try_build_profile()        

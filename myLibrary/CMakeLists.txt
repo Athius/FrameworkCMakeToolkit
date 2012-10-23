@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(myLibrary CXX)
 
+set(${PROJECT_NAME}_VERSION_MAJOR 1)
+set(${PROJECT_NAME}_VERSION_MINOR 0)
+set(${PROJECT_NAME}_VERSION_PATCH 0)
+set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}") 
+
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/CMake" FORCE)
+
 set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE STRING "Include dir for myLibrary")
 set(MYLIBRARY_SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src CACHE STRING "Source dir for myLibrary")
 
@@ -27,24 +34,11 @@ install(FILES ${header_files}
         DESTINATION "include"
         COMPONENT library_headers)
         
-set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
-set(CPACK_PACKAGE_VENDOR "Romain LEGUAY")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Example test framework")
-set(CPACK_PACKAGE_VERSION_MAJOR "1")
-set(CPACK_PACKAGE_VERSION_MINOR "0")
-set(CPACK_PACKAGE_VERSION_PATCH "0")
-set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
-set(CPACK_SOURCE_IGNORE_FILES "/lib/;/.svn/;/.git/;${CPACK_SOURCE_IGNORE_FILES};/.project/.cproject/CMakeFiles/;")
+set(COMPONENT_NAMES libraries library_headers)
 
-set(CPACK_COMPONENTS_ALL "")
+include(Package)
 
-set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake")
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackSourceConfig.cmake")
-
-add_custom_target(${PROJECT_NAME}-package "cpack" "--config" "${CPACK_OUTPUT_CONFIG_FILE}")
-add_custom_target(${PROJECT_NAME}-package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
-
-include(CPack)
+try_build_package()
 
 cpack_add_component_group(libs
                           DISPLAY_NAME "Required Libraries")
@@ -57,4 +51,12 @@ cpack_add_component(libs
 cpack_add_component(library_headers
                     DISPLAY_NAME "Headers"
                     GROUP libs
-                    REQUIRED)                                        
+                    REQUIRED)
+
+include(Documentation)
+
+try_build_documentation()
+
+include(Profile)
+
+try_build_profile()
