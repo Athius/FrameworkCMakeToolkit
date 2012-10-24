@@ -2,8 +2,8 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = @PROJECT_NAME@
-PROJECT_NUMBER         = @@PROJECT_NAME@_VERSION@/doc
+PROJECT_NAME           = @APPLICATION_OUTPUT_NAME@
+PROJECT_NUMBER         = @@APPLICATION_OUTPUT_NAME@_VERSION@/doc
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English

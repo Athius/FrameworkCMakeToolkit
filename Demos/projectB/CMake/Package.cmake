@@ -16,8 +16,9 @@ macro(try_build_package)
     set(CPACK_PACKAGE_VERSION_MINOR "${${APPLICATION_OUTPUT_NAME}_VERSION_MINOR}")
     set(CPACK_PACKAGE_VERSION_PATCH "${${APPLICATION_OUTPUT_NAME}_VERSION_PATCH}")
     set(CPACK_PACKAGE_VERSION "${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
-    set(CPACK_SOURCE_IGNORE_FILES "/lib/;/.svn/;/.git/;${CPACK_SOURCE_IGNORE_FILES};/.project/.cproject/CMakeFiles/;")
-    
+    set(CPACK_SOURCE_IGNORE_FILES "/lib/;/.svn/;/.git/;/.project/;/.cproject/;/CMakeFiles/;/*#/;/CMakeFiles/;/cmake_install.cmake/;/CMakeCache.txt/;/CPackConfig.cmake/;/CPackSourceConfig.cmake/;/Makefile/;/*.sln/;/.DS_Store/;/.gitignore/;")
+    set(CPACK_SOURCE_INSTALLED_DIRECTORIES "${CMAKE_CURRENT_SOURCE_DIR};.;${CMAKE_CURRENT_SOURCE_DIR}/include;./include;${CMAKE_CURRENT_SOURCE_DIR}/src;./src;${CMAKE_CURRENT_SOURCE_DIR}/CMake;./CMake") 
+
     set(CPACK_PACKAGE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/packages")
     
     if (NOT ("${CMAKE_BUILD_TYPE}" STREQUAL ""))

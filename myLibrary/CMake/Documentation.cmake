@@ -14,15 +14,15 @@ if (DOXYGEN_FOUND)
 	set(DOCUMENTATION_OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/doc/html/index.html)
 	set(DOCUMENTATION_COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/doc/Doxyfile-html)
 
-	add_custom_target(${APPLICATION_OUTPUT_NAME}_doc 
+	add_custom_target(${LIBRARY_OUTPUT_NAME}_doc 
 							DEPENDS ${DOCUMENTATION_OUTPUT})
 
 	# Build the doxydoc if project has changed	
 	add_custom_command(OUTPUT  ${DOCUMENTATION_OUTPUT}
 		           COMMAND ${DOCUMENTATION_COMMAND} 
-		           DEPENDS ${APPLICATION_OUTPUT_NAME})
+		           DEPENDS ${LIBRARY_OUTPUT_NAME})
         
-	add_dependencies(${APPLICATION_OUTPUT_NAME}_doc ${APPLICATION_OUTPUT_NAME}_doc)
+	add_dependencies(${LIBRARY_OUTPUT_NAME}_doc ${LIBRARY_OUTPUT_NAME}_doc)
 endif()
 
 endfunction(try_build_documentation)
