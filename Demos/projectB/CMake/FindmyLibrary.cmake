@@ -1,7 +1,15 @@
-find_file(GPROF2DOT_FILE gprof2Dot.py)
+if ("${MYLIBRARY_INCLUDE_DIRS}" STREQUAL "") 
 
-#set(GPROF2DOT ${GPROF2DOT_FILE})
-
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(GPROF2DOT DEFAULT_MSG
-                                  GPROF2DOT_FILE)
+    find_path(MYLIBRARY_INCLUDE_DIR Sum.hpp)
+    find_path(MYLIBRARY_SOURCE_DIR Sum.cpp)
+    find_library(MYLIBRARY_LIBRARY_NAMES myLibrary)
+        
+    set(MYLIBRARY_INCLUDE_DIRS ${MYLIBRARY_INCLUDE_DIR})
+    set(MYLIBRARY_SOURCE_DIRS ${MYLIBRARY_SOURCE_DIR})
+    set(MYLIBRARY_LIBRARIES ${MYLIBRARY_LIBRARY_NAMES})
+        
+    include(FindPackageHandleStandardArgs)
+    find_package_handle_standard_args(myLibrary DEFAULT_MSG
+                                      MYLIBRARY_LIBRARIES MYLIBRARY_INCLUDE_DIRS)
+                                  
+endif()

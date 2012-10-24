@@ -35,9 +35,8 @@ function(try_build_profile)
     find_package(Gprof2Dot REQUIRED)
 
     # Cache variables that setting generation of the graphic for the profiling 
-    file(MAKE_DIRECTORY PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
-   
     set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    file(MAKE_DIRECTORY "${PROFILE_OUTPUT_DIR}")
    
     set(PROFILE_GRAPHIC_FILE_TYPE "svg" 
       CACHE STRING 
@@ -54,7 +53,7 @@ function(try_build_profile)
     # Rule for generating file gmon.out, run the application
     add_custom_command(OUTPUT ${GMON_OUT}
       COMMAND ${APPLICATION_BIN} ${APPLICATION_PARAMETERS}
-      DEPENDS ${PROJECT_NAME})
+      DEPENDS ${APPLICATION_OUTPUT_NAME})
     
     # Rule for generating file profile.txt, run gprof on gmon.out
     add_custom_command(OUTPUT ${PROFILE_TXT}
@@ -72,7 +71,7 @@ function(try_build_profile)
       DEPENDS ${PROFILE_DOT}) 
     
     # Target for generating graphic of the profiling as an image file
-    add_custom_target(demo_${PROJECT_NAME}_profile DEPENDS ${PROFILE_GRAPH})
+    add_custom_target(${APPLICATION_OUTPUT_NAME}_profile DEPENDS ${PROFILE_GRAPH})
     else()
       # Miss some tools, or not in profile mode
       if(PROFILE_OUTPUT_DIR)

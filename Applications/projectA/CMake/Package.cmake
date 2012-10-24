@@ -1,3 +1,11 @@
+# - Set the version for the project
+macro(set_project_version VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
+    set(${PROJECT_NAME}_VERSION_MAJOR ${VERSION_MAJOR})
+    set(${PROJECT_NAME}_VERSION_MINOR ${VERSION_MINOR})
+    set(${PROJECT_NAME}_VERSION_PATCH ${VERSION_PATCH})
+    set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}") 
+endmacro()
+
 function(try_build_package)
         
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
@@ -23,8 +31,8 @@ endforeach()
 set(CPACK_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackConfig.cmake")
 set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackSourceConfig.cmake")
 
-add_custom_target(application_${PROJECT_NAME}_package "cpack" "--config" "${CPACK_OUTPUT_CONFIG_FILE}")
-add_custom_target(application_${PROJECT_NAME}_package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
+add_custom_target(${PROJECT_NAME}_package "cpack" "--config" "${CPACK_OUTPUT_CONFIG_FILE}")
+add_custom_target(${PROJECT_NAME}_package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
 
 include(CPack)
 

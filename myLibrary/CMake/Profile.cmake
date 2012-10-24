@@ -25,6 +25,7 @@ if (UNIX)
         FORCE)
 endif()
 
+
 # - Define a target that try to generate a a png diagram of the profiling if mode profile is activated and gprof2dot and gprof are found, assume Tool module is already included
 function(try_build_profile)
   
@@ -34,9 +35,8 @@ function(try_build_profile)
     find_package(Gprof2Dot REQUIRED)
 
     # Cache variables that setting generation of the graphic for the profiling 
-    file(MAKE_DIRECTORY PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
-   
-   set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    file(MAKE_DIRECTORY "${PROFILE_OUTPUT_DIR}")
    
     set(PROFILE_GRAPHIC_FILE_TYPE "svg" 
       CACHE STRING 

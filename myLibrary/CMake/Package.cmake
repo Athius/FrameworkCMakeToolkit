@@ -1,10 +1,10 @@
 # - Set the version for the project
-function(set_project_version VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
+macro(set_project_version VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
     set(${PROJECT_NAME}_VERSION_MAJOR ${VERSION_MAJOR})
     set(${PROJECT_NAME}_VERSION_MINOR ${VERSION_MINOR})
     set(${PROJECT_NAME}_VERSION_PATCH ${VERSION_PATCH})
     set(${PROJECT_NAME}_VERSION "${${PROJECT_NAME}_VERSION_MAJOR}.${${PROJECT_NAME}_VERSION_MINOR}.${${PROJECT_NAME}_VERSION_PATCH}") 
-endfunction()
+endmacro()
 
 function(try_build_package)
         

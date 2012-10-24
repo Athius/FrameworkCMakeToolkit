@@ -25,6 +25,7 @@ if (UNIX)
         FORCE)
 endif()
 
+
 # - Define a target that try to generate a a png diagram of the profiling if mode profile is activated and gprof2dot and gprof are found, assume Tool module is already included
 function(try_build_profile)
   
@@ -34,9 +35,8 @@ function(try_build_profile)
     find_package(Gprof2Dot REQUIRED)
 
     # Cache variables that setting generation of the graphic for the profiling 
-   file(MAKE_DIRECTORY PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
-   
-   set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    file(MAKE_DIRECTORY "${PROFILE_OUTPUT_DIR}")
    
     set(PROFILE_GRAPHIC_FILE_TYPE "svg" 
       CACHE STRING 
@@ -49,12 +49,12 @@ function(try_build_profile)
     set(PROFILE_TXT "${PROFILE_OUTPUT_DIR}/profile.txt")
     set(PROFILE_DOT "${PROFILE_OUTPUT_DIR}/profile.dot")
     set(PROFILE_GRAPH "${PROFILE_OUTPUT_DIR}/profile.${PROFILE_GRAPHIC_FILE_TYPE}")
-        
+    
     # Rule for generating file gmon.out, run the application
     add_custom_command(OUTPUT ${GMON_OUT}
       COMMAND ${APPLICATION_BIN} ${APPLICATION_PARAMETERS}
       DEPENDS ${PROJECT_NAME})
-        
+    
     # Rule for generating file profile.txt, run gprof on gmon.out
     add_custom_command(OUTPUT ${PROFILE_TXT}
       COMMAND ${GPROF_EXECUTABLE} -z ${APPLICATION_BIN} > ${PROFILE_TXT}
@@ -71,7 +71,7 @@ function(try_build_profile)
       DEPENDS ${PROFILE_DOT}) 
     
     # Target for generating graphic of the profiling as an image file
-    add_custom_target(application_${PROJECT_NAME}_profile DEPENDS ${PROFILE_GRAPH} WORKING_DIRECTORY ${PROFILE_OUTPUT_DIR})
+    add_custom_target(${PROJECT_NAME}_profile DEPENDS ${PROFILE_GRAPH})
     else()
       # Miss some tools, or not in profile mode
       if(PROFILE_OUTPUT_DIR)
