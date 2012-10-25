@@ -48,3 +48,19 @@ try_build_documentation()
 include(Profile)
 
 try_build_profile()
+
+include(Test)
+
+set(TEST_NAME ${LIBRARY_OUTPUT_NAME}_testSum)
+set(TEST_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test/include)
+set(TEST_OUTPUT_CPP_FILE TestSum.cpp)
+
+file(GLOB_RECURSE TEST_INPUT_FILES
+     ${TEST_INCLUDE_DIR}/*.hpp
+     ${TEST_INCLUDE_DIR}/*.h
+     ${TEST_INCLUDE_DIR}/*.hxx)
+      
+set(TEST_LIBRARY_INCLUDE_DIRS  ${MYLIBRARY_INCLUDE_DIRS})
+set(TEST_LIBRARIES ${LIBRARY_OUTPUT_NAME})
+
+try_build_test("${TEST_NAME}" "${TEST_INPUT_INCLUDE_DIRS}"  "${TEST_OUTPUT_CPP_FILE}" "${TEST_INPUT_FILES}" "${TEST_LIBRARY_INCLUDE_DIRS}" "${TEST_LIBRARIES}")
