@@ -1,8 +1,8 @@
 # Add a target to build a cxxtest class and put this target in the 'test' target's dependencies.
 # 
 # Usage example:
-# set(TEST_NAME ${APPLICATION_OUTPUT_NAME}_testSum)
-# set(TEST_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test/include ${APPLICATION_INCLUDE_DIRS})
+# set(TEST_NAME ${PROJECT_OUTPUT_NAME}_testSum)
+# set(TEST_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test/include ${PROJECT_INCLUDE_DIRS})
 # set(TEST_OUTPUT_CPP_DIR "test/src")
 # set(TEST_OUTPUT_CPP_FILE TestSum.cpp)
 #
@@ -10,9 +10,9 @@
 #      ${CMAKE_CURRENT_SOURCE_DIR}/test/include/*.hpp
 #      ${CMAKE_CURRENT_SOURCE_DIR}/test/include/*.h
 #      ${CMAKE_CURRENT_SOURCE_DIR}/test/include/*.hxx
-#      ${APPLICATION_SOURCE_DIRS}/TestSum.cpp)
+#      ${PROJECT_SOURCE_DIRS}/TestSum.cpp)
 #      
-# set(TEST_LIBRARY_INCLUDE_DIRS  ${MYLIBRARY_INCLUDE_DIRS})
+# set(TEST_PROJECT_INCLUDE_DIRS  ${MYLIBRARY_INCLUDE_DIRS})
 #
 # if ("${MYLIBRARY_LIBRARIES}" STREQUAL "")
 #     set(TEST_LIBRARIES myLibrary ${ADDITIONAL_LIBRARIES})
@@ -20,7 +20,7 @@
 #     set(TEST_LIBRARIES ${MYLIBRARY_LIBRARIES} ${ADDITIONAL_LIBRARIES})
 # endif()
 #
-# try_build_test("${TEST_NAME}" "${TEST_INCLUDE_DIR}" "${TEST_OUTPUT_CPP_DIR}" "${TEST_OUTPUT_CPP_FILE}" "${TEST_INPUT_FILES}" "${TEST_LIBRARY_INCLUDE_DIRS}" "${TEST_LIBRARIES}")
+# try_build_test("${TEST_NAME}" "${TEST_INCLUDE_DIR}" "${TEST_OUTPUT_CPP_DIR}" "${TEST_OUTPUT_CPP_FILE}" "${TEST_INPUT_FILES}" "${TEST_PROJECT_INCLUDE_DIRS}" "${TEST_LIBRARIES}")
 # 
 macro(try_build_test test_name test_input_include_dirs test_output_cpp_file test_input_files test_library_include_dirs test_libraries)
     

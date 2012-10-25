@@ -45,7 +45,7 @@ function(try_build_profile)
     # Get the location of the application binary
     get_target_property(APPLICATION_BIN ${PROJECT_NAME} LOCATION)
     
-    add_custom_target(${LIBRARY_OUTPUT_NAME}_profile DEPENDS ${LIBRARY_OUTPUT_NAME})
+    add_custom_target(${PROJECT_OUTPUT_NAME}_profile DEPENDS ${PROJECT_OUTPUT_NAME})
     
   else()
       # Miss some tools, or not in profile mode

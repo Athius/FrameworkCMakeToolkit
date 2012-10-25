@@ -2,8 +2,8 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = @LIBRARY_OUTPUT_NAME@
-PROJECT_NUMBER         = @@LIBRARY_OUTPUT_NAME@_VERSION@/doc
+PROJECT_NAME           = @PROJECT_OUTPUT_NAME@
+PROJECT_NUMBER         = @@PROJECT_OUTPUT_NAME@_VERSION@/doc
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
@@ -134,11 +134,7 @@ FILE_PATTERNS          = *.c \
 RECURSIVE              = YES
 EXCLUDE                = 
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = #*/stable/* \
-                         #*/prebuild/* \
-			 #*/include_dev/* \
-			 #*/include_utils/* \
-			 #*/Bapcod/src/*
+EXCLUDE_PATTERNS       = 
 EXCLUDE_SYMBOLS        = 
 EXAMPLE_PATH           = 
 EXAMPLE_PATTERNS       = *
@@ -211,7 +207,7 @@ SERVER_BASED_SEARCH    = YES
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output
 #---------------------------------------------------------------------------
-GENERATE_LATEX         = YES
+GENERATE_LATEX         = @GENERATE_LATEX@
 LATEX_OUTPUT           = latex
 LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
@@ -220,10 +216,10 @@ PAPER_TYPE             = a4wide
 EXTRA_PACKAGES         = 
 LATEX_HEADER           = 
 PDF_HYPERLINKS         = YES
-USE_PDFLATEX           = YES
+USE_PDFLATEX           = @USE_PDFLATEX@
 LATEX_BATCHMODE        = NO
 LATEX_HIDE_INDICES     = NO
-LATEX_SOURCE_CODE      = YES
+LATEX_SOURCE_CODE      = NO
 
 #---------------------------------------------------------------------------
 # configuration options related to the RTF output

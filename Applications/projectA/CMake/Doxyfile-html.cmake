@@ -2,8 +2,8 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = @APPLICATION_OUTPUT_NAME@
-PROJECT_NUMBER         = @@APPLICATION_OUTPUT_NAME@_VERSION@/doc
+PROJECT_NAME           = @PROJECT_OUTPUT_NAME@
+PROJECT_NUMBER         = @@PROJECT_OUTPUT_NAME@_VERSION@/doc
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
@@ -211,7 +211,7 @@ SERVER_BASED_SEARCH    = YES
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output
 #---------------------------------------------------------------------------
-GENERATE_LATEX         = NO
+GENERATE_LATEX         = YES
 LATEX_OUTPUT           = latex
 LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
