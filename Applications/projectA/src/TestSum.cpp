@@ -9,7 +9,7 @@
 
 namespace projectA {
 
-TestSum::TestSum() : m_sum(1,2){
+TestSum::TestSum() : m_sum(1,2), m_doublePtr(new double(2)){
 }
 
 TestSum::~TestSum() {

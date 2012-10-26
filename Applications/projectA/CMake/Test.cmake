@@ -32,10 +32,12 @@ macro(try_build_test test_name test_input_include_dirs test_output_cpp_file test
       enable_testing()
 
       include_directories(${CXXTEST_INCLUDE_DIR} ${test_input_include_dirs} ${test_library_include_dirs})
+      link_directories(${ADDITIONAL_LIBRARY_DIRS})
       
       # Add a target ${test_name} to build cxxtest
       cxxtest_add_test(${test_name} ${test_output_cpp_file} ${test_input_files})
-      target_link_libraries(${test_name} "${test_libraries}")
+      target_link_libraries(${test_name} ${test_libraries})
+      
           
       add_custom_target(${test_name}_run "ctest" "-VV" DEPENDS ${test_name})
           

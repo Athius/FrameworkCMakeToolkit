@@ -36,6 +36,22 @@ macro(try_build_package)
     add_custom_target(${PROJECT_OUTPUT_NAME}_package "cpack" "--config" "${CPACK_OUTPUT_CONFIG_FILE}")
     add_custom_target(${PROJECT_OUTPUT_NAME}_package_source "cpack" "--config" "${CPACK_SOURCE_OUTPUT_CONFIG_FILE}")
     
+     # If the target 'package' doesn't exist, we create it
+      if (NOT TARGET "package")
+        add_custom_target(package)
+      endif()
+    
+      # Add the dependency ${PROJECT_OUTPUT_NAME}_package to the target 'package'
+      add_dependencies(package ${PROJECT_OUTPUT_NAME}_package)
+    
+     # If the target 'package_source' doesn't exist, we create it
+      if (NOT TARGET "package_source")
+        add_custom_target(package_source)
+      endif()
+    
+      # Add the dependency ${PROJECT_OUTPUT_NAME}_package_source to the target 'package_source'
+      add_dependencies(package_source ${PROJECT_OUTPUT_NAME}_package_source)
+    
     include(CPack)
                     
 endmacro(try_build_package)

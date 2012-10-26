@@ -59,10 +59,9 @@ macro(try_build_application)
     # Those variables can be overload if the user specify it inside the project's CMakeLists.txt.
     set_if_not_set(ADDITIONAL_LIBRARIES "")
     set_if_not_set(ADDITIONAL_INCLUDE_DIRS "")
-
-    find_package(myLibrary REQUIRED)
     
-    include_directories(${PROJECT_INCLUDE_DIRS} ${MYLIBRARY_INCLUDE_DIRS} ${ADDITIONAL_INCLUDE_DIRS})
+    include_directories(${PROJECT_INCLUDE_DIRS} ${ADDITIONAL_INCLUDE_DIRS})
+    link_directories(${ADDITIONAL_LIBRARY_DIRS})
     
     file(GLOB_RECURSE header_files
          ${PROJECT_INCLUDE_DIRS}/*.hpp
@@ -74,11 +73,11 @@ macro(try_build_application)
          ${PROJECT_SOURCE_DIRS}/*.cxx)
 
     add_executable(${PROJECT_OUTPUT_NAME} ${source_files})
-    if ("${MYLIBRARY_LIBRARIES}" STREQUAL "")
-        target_link_libraries(${PROJECT_OUTPUT_NAME} myLibrary ${ADDITIONAL_LIBRARIES})
-    else()
-        target_link_libraries(${PROJECT_OUTPUT_NAME} ${MYLIBRARY_LIBRARIES} ${ADDITIONAL_LIBRARIES})
-    endif()
+#    if ("${MYLIBRARY_LIBRARIES}" STREQUAL "")
+        target_link_libraries(${PROJECT_OUTPUT_NAME} ${ADDITIONAL_LIBRARIES})
+#    else()
+#        target_link_libraries(${PROJECT_OUTPUT_NAME} ${ADDITIONAL_LIBRARIES} ${MYLIBRARY_LIBRARIES})
+#    endif()
     
     set_target_properties(${PROJECT_OUTPUT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_EXECUTABLE_OUTPUT_DIRECTORY})
    

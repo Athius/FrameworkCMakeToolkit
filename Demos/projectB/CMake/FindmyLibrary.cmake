@@ -11,5 +11,10 @@ if ("${MYLIBRARY_INCLUDE_DIRS}" STREQUAL "")
     include(FindPackageHandleStandardArgs)
     find_package_handle_standard_args(myLibrary DEFAULT_MSG
                                       MYLIBRARY_LIBRARIES MYLIBRARY_INCLUDE_DIRS)
-                                  
+    
+    if(NOT MYLIBRARY_LIBRARIES-NOTFOUND)
+      find_path(MYLIBRARY_LIBRARY_DIRS myLibrary NAMES libmyLibrary.a myLibrary.lib)
+      message(STATUS "MYLIBRARY_LIBRARY_DIRS: ${MYLIBRARY_LIBRARY_DIRS}")
+    endif()        
+                                      
 endif()

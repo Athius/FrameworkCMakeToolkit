@@ -6,8 +6,9 @@ include(Project)
 
 set_project(myLibrary CXX)
 
-set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE STRING "Include dir for myLibrary")
-set(MYLIBRARY_SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src CACHE STRING "Source dir for myLibrary")
+set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE DOC "Include dir for myLibrary")
+set(MYLIBRARY_SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src CACHE DOC "Source dir for myLibrary")
+set(MYLIBRARY_LIBRARY_DIRS ${PROJECT_LIBRARY_OUTPUT_DIRECTORY} CACHE DOC "Library include dir for myLibrary")
 
 try_build_library()
 
