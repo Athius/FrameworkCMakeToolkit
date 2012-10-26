@@ -30,21 +30,21 @@ Optional:
 
 In the current directory:
    
-   cmake .
-   make
+      cmake .
+      make
 
 In a Build directory:
    
-   mkdir Build && cd Build
-   cmake ..
-   make
+      mkdir Build && cd Build
+      cmake ..
+      make
 
 
 ### Build package:
 
 To build all packages:
 
-   make package
+      make package
 
 The packages can be found in each 'packages' folder inside each projects (myLibrary, Applications/projectA and Demos/projectB)
 
@@ -53,11 +53,11 @@ The packages can be found in each 'packages' folder inside each projects (myLibr
 
 To build all documentation:
 
-   make doc
+      make doc
 
 The packages can be found in each 'doc' folder inside each projects. You can find two folders inside it: html and latex (if latex is found).
 
 To build pdf documentation for projectA:
 
-   make applications_projectA_doc_pdf
+      make applications_projectA_doc_pdf
 
