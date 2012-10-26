@@ -1,4 +1,4 @@
-# Add a target to build a cxxtest class and put this target in the 'test' target's dependencies.
+# Add a target ${test_name}_run to build a cxxtest class and put this target in the 'test' target's dependencies.
 # 
 # Usage example:
 # set(TEST_NAME ${PROJECT_OUTPUT_NAME}_testSum)
@@ -27,7 +27,7 @@ macro(try_build_test test_name test_input_include_dirs test_output_cpp_file test
     find_package(CxxTest)
     
     if(CXXTEST_FOUND)
-      
+            
       # Enable testing for CTest     
       enable_testing()
 

@@ -1,13 +1,19 @@
-# - Set the version for the project
-macro(set_project_version VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
+# Set the version for the project
+# Usage: set_project_name_version(MAJOR MINOR PATCH)
+macro(set_project_name_version VERSION_MAJOR VERSION_MINOR VERSION_PATCH)
     set_if_not_set(${PROJECT_OUTPUT_NAME}_VERSION_MAJOR ${VERSION_MAJOR})
     set_if_not_set(${PROJECT_OUTPUT_NAME}_VERSION_MINOR ${VERSION_MINOR})
     set_if_not_set(${PROJECT_OUTPUT_NAME}_VERSION_PATCH ${VERSION_PATCH})
     set_if_not_set(${PROJECT_OUTPUT_NAME}_VERSION "${${PROJECT_OUTPUT_NAME}_VERSION_MAJOR}.${${PROJECT_OUTPUT_NAME}_VERSION_MINOR}.${${PROJECT_OUTPUT_NAME}_VERSION_PATCH}") 
 endmacro()
 
+# Add target '${PROJECT_OUTPUT_NAME}_package' to build binary package of the project.
+# Add target '${PROJECT_OUTPUT_NAME}_package_source' to build source package of the project.
+# Add target 'package' to build all binary packages.
+# Add target 'package_source' to build all source packages.
+# Usage: try_build_package()
 macro(try_build_package)
-    set_project_version(1 0 0)
+    set_project_name_version(1 0 0)
             
     set(CPACK_PACKAGE_NAME "${PROJECT_OUTPUT_NAME}")
     set(CPACK_PACKAGE_VENDOR "Romain LEGUAY")

@@ -1,3 +1,4 @@
+# Search gprof
 if (UNIX AND (CMAKE_BUILD_TYPE MATCHES "Profile"))
     find_package(PythonInterp)
     

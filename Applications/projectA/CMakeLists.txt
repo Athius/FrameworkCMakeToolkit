@@ -7,7 +7,7 @@ find_package(myLibrary REQUIRED)
 
 include(Project)
 
-set_project(projectA CXX)
+set_project_with_parent_name_prefix(projectA CXX)
 
 set(ADDITIONAL_LIBRARIES boost_program_options myLibrary)
 set(ADDITIONAL_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${MYLIBRARY_INCLUDE_DIRS})

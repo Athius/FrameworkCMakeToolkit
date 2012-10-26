@@ -1,9 +1,9 @@
-# - Add Profile in CMAKE_BUILD_TYPE if we are in Unix system
+# Add Profile in CMAKE_BUILD_TYPE if we are in Unix system
 if (UNIX)
     set(CMAKE_CXX_FLAGS_PROFILE "-Wall -Wabi -pg -g" CACHE STRING
         "Flags used by the C++ compiler during profile builds."
         FORCE)
-    set(CMAKE_C_FLAGS_PROFILE "-Wall -pedantic" CACHE STRING
+    set(CMAKE_C_FLAGS_PROFILE "-Wall -pedantic -pg -g" CACHE STRING
         "Flags used by the C compiler during profile builds."
         FORCE)
     set(CMAKE_EXE_LINKER_FLAGS_PROFILE
@@ -26,7 +26,8 @@ if (UNIX)
 endif()
 
 
-# - Define a target that try to generate a a png diagram of the profiling if mode profile is activated and gprof2dot and gprof are found, assume Tool module is already included
+# Add a target '${PROJECT_OUTPUT_NAME}_profile' to generate an image (png,svg...) diagram of the profiling if mode profile is activated and gprof2dot and gprof are found.
+# Usage: try_build_profile()
 function(try_build_profile)
   
   find_package(GProf)
@@ -35,7 +36,7 @@ function(try_build_profile)
     find_package(Gprof2Dot REQUIRED)
 
     # Cache variables that setting generation of the graphic for the profiling 
-    set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
+    set_if_not_set(PROFILE_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/profile")
     file(MAKE_DIRECTORY "${PROFILE_OUTPUT_DIR}")
    
     set(PROFILE_GRAPHIC_FILE_TYPE "svg" 

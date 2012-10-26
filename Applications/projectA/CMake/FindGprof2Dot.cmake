@@ -1,3 +1,5 @@
+# Search gprof2dot.py or download it in ${CMAKE_CURRENT_BINARY_DIR}/third_party_tools/gprof2dot.py.
+# This python script can create dot grah from gprof data.
 if (UNIX)
     if ("${GPROF2DOT_EXECUTABLE}" STREQUAL "") 
         find_file(GPROF2DOT_EXECUTABLE gprof2dot.py HINTS ${GPROF2DOT_EXECUTABLE} DOC "gprof2dot.py file to convert gprof file to dot graph")

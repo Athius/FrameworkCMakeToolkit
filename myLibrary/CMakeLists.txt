@@ -4,7 +4,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/CMake"
 
 include(Project)
 
-set_project(myLibrary CXX)
+project(myLibrary CXX)
 
 set(MYLIBRARY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE DOC "Include dir for myLibrary")
 set(MYLIBRARY_SOURCE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src CACHE DOC "Source dir for myLibrary")
@@ -25,7 +25,7 @@ set(COMPONENT_NAMES libraries library_headers)
 
 include(Package)
 
-set_project_version(1 0 0)
+set_project_name_version(1 0 0)
 
 try_build_package()
 

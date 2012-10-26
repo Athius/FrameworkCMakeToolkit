@@ -6,7 +6,7 @@ find_package(myLibrary REQUIRED)
 
 include(Project)
 
-set_project(projectB CXX)
+set_project_with_parent_name_prefix(projectB CXX)
 
 set(ADDITIONAL_LIBRARIES myLibrary)
 set(ADDITIONAL_INCLUDE_DIRS ${MYLIBRARY_INCLUDE_DIRS})
