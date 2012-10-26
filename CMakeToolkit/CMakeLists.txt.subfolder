@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
+# This macro get all the subdirectories of the current folder inside a list
 macro(SUBDIRLIST result curdir)
   file(GLOB children RELATIVE ${curdir} ${curdir}/*)
   set(dirlist "")
@@ -13,6 +14,7 @@ endmacro()
 
 SUBDIRLIST(SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}")
 
+# Add all subdirectories of the current folder
 foreach(subdir ${SUBDIRS})
     add_subdirectory(${subdir})
 endforeach(subdir ${SUBDIRS})
