@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-add_subdirectory(myLibrary)
-add_subdirectory(Demos)
-add_subdirectory(Applications)
+# Add here all the subdirectories
+add_subdirectory(sub1)
+add_subdirectory(sub2)
+# ....
