@@ -14,9 +14,9 @@ This project provides you some CMake scripts to help to build your C/C++ applica
 
 Copy CMakeToolkit/CMake inside each project folders.
 
-Copy CMakeToolkit/CMakeLists.txt.library in a library project.
+Copy CMakeToolkit/CMakeLists.txt.library in a library project and rename it CMakeLists.txt.
 
-Copy CMakeToolkit/CMakeLists.txt.executable in a executable project.
+Copy CMakeToolkit/CMakeLists.txt.executable in a executable project and rename it CMakeLists.txt.
 
 CMakeToolkit/CMakeLists.txt.root_folder and CMakeToolkit/CMakeLists.txt.subfolder are used if you have a tree like in the FrameworkTest example.
 
