@@ -130,15 +130,18 @@ Macro list:
 
 * set_auto_project_name:
 	* Put an automatic project name based on the current source folder name.
-	  	       Usage: set_auto_project_name()
+	  
+			Usage: set_auto_project_name()
 
 * init_project_variables:
 	* Initialize the project variables with default values if they are not already set.
-	  	       Usage: init_project_variables()
+	  	       
+			Usage: init_project_variables()
 
 * search_and_add_files_to_build_the_project:
 	* Search headers, source files and add include directories and link directories.
-	  	       Usage: search_and_add_files_to_build_the_project()
+	  	       
+			Usage: search_and_add_files_to_build_the_project()
 
 
 ### V 0.1:
