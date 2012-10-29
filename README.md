@@ -24,6 +24,10 @@ CMakeToolkit/CMakeLists.txt.root_folder and CMakeToolkit/CMakeLists.txt.subfolde
 Features:
 ---------
 
+### V 0.2:
+
+* Put automatic name to project if it's not already set
+
 ### V 0.1:
 
 
@@ -36,7 +40,6 @@ Features:
 * Add target for profiling with GProf and build performance graph if Profile is put on CMAKE_BUILD_TYPE. (Just on Unix systems)
 
 * Add target to build CxxTest.
-
 
 
 Variable list:
@@ -120,6 +123,23 @@ Only available on Unix system.
 
 Macro list:
 -----------
+
+### V.0.2:
+
+*Project.cmake:*
+
+* set_auto_project_name:
+	* Put an automatic project name based on the current source folder name.
+	  	       Usage: set_auto_project_name()
+
+* init_project_variables:
+	* Initialize the project variables with default values if they are not already set.
+	  	       Usage: init_project_variables()
+
+* search_and_add_files_to_build_the_project:
+	* Search headers, source files and add include directories and link directories.
+	  	       Usage: search_and_add_files_to_build_the_project()
+
 
 ### V 0.1:
 
