@@ -52,31 +52,31 @@ Variable list:
 
 * **PROJECT_INCLUDE_DIRS**                : Include directories to search .hpp, .hxx and .h files. 
 		
-		**Default value:** ${CMAKE_CURRENT_SOURCE_DIR}/include
+		Default value: ${CMAKE_CURRENT_SOURCE_DIR}/include
 
 * **PROJECT_SOURCE_DIRS**                 : Source directories to search .cpp, .cxx and .c files. 
 
-		**Default value:** ${CMAKE_CURRENT_SOURCE_DIR}/src
+		Default value: ${CMAKE_CURRENT_SOURCE_DIR}/src
 
 * **PROJECT_OUTPUT_NAME**                 : Output name of the project. 
 
-		**Default value:** ${PROJECT_NAME}
+		Default value: ${PROJECT_NAME}
 
 * **PROJECT_LIBRARY_OUTPUT_DIRECTORY**    : Library output directory. 
 
-		**Default value:** ${CMAKE_CURRENT_BINARY_DIR}/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}
+		Default value: ${CMAKE_CURRENT_BINARY_DIR}/lib/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}
 
 * **PROJECT_EXECUTABLE_OUTPUT_DIRECTORY** : Executable output directory. 
 
-		**Default value:** ${CMAKE_CURRENT_BINARY_DIR}/bin/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}
+		Default value: ${CMAKE_CURRENT_BINARY_DIR}/bin/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${CMAKE_BUILD_TYPE}
 
 * **ADDITIONAL_LIBRARIES**                : Additional libraries to build the project. 
 
-		**Default value:** ""
+		Default value: ""
 
 * **ADDITIONAL_INCLUDE_DIRS**             : Additional include directories to build the project. 
 
-		**Default value:** ""
+		Default value: ""
 
 
 
