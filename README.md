@@ -1,7 +1,7 @@
 FrameworkCMakeToolkit
 =====================
 
-This project provides you some CMake scripts to help to build your C/C++ application.
+This project provides you some CMake scripts to build your C/C++ applications more easily.
 
 ### What you need?
 
