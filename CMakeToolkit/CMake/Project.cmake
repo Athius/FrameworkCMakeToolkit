@@ -53,21 +53,29 @@ endmacro(init_project_variables )
 # Search headers, source files and add include directories and link directories.
 # Usage: search_and_add_files_to_build_the_project()
 macro(search_and_add_files_to_build_the_project)
-    include_directories(${PROJECT_INCLUDE_DIRS} ${ADDITIONAL_INCLUDE_DIRS})
+#    include_directories(${PROJECT_INCLUDE_DIRS} ${ADDITIONAL_INCLUDE_DIRS})
+    include_directories(${ADDITIONAL_INCLUDE_DIRS})
     link_directories(${ADDITIONAL_LIBRARY_DIRS})
 
     if ("${header_files}" STREQUAL "")
-      file(GLOB_RECURSE header_files
-        ${PROJECT_INCLUDE_DIRS}/*.hpp
-        ${PROJECT_INCLUDE_DIRS}/*.hxx
-        ${PROJECT_INCLUDE_DIRS}/*.h)
+      foreach(include_dir ${PROJECT_INCLUDE_DIRS})
+	include_directories(${include_dir})
+	file(GLOB_RECURSE tmp_headers
+          ${include_dir}/*.hpp
+          ${include_dir}/*.hxx
+          ${include_dir}/*.h)
+	list(APPEND header_files ${tmp_headers})
+      endforeach()
     endif()
 
     if ("${source_files}" STREQUAL "")
-      file(GLOB_RECURSE source_files
-        ${PROJECT_SOURCE_DIRS}/*.cpp
-        ${PROJECT_SOURCE_DIRS}/*.cxx
-        ${PROJECT_SOURCE_DIRS}/*.c)
+      foreach(source_dir ${PROJECT_SOURCE_DIRS})
+	file(GLOB_RECURSE tmp_sources
+          ${source_dir}/*.cpp
+          ${source_dir}/*.cxx
+          ${source_dir}/*.c)
+	list(APPEND source_files ${tmp_sources})
+      endforeach()
     endif()
 
 endmacro(search_and_add_files_to_build_the_project)
