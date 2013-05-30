@@ -45,6 +45,10 @@ Features:
 Variable list:
 --------------
 
+### Current Release
+
+* **ADDITIONAL_FILES**                    : Add other file to be built with the library or the executable. (Usefull for Qt moc files)
+
 ### V 0.1:
 
 

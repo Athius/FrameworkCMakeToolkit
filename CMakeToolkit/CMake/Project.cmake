@@ -90,7 +90,7 @@ macro(try_build_library)
 
     search_and_add_files_to_build_the_project()
     test_if_not_empty(source_files)
-    add_library(${PROJECT_OUTPUT_NAME} STATIC ${source_files} ${header_files})
+    add_library(${PROJECT_OUTPUT_NAME} STATIC ${source_files} ${header_files} ${ADDITIONAL_FILES})
  
     target_link_libraries(${PROJECT_OUTPUT_NAME} ${ADDITIONAL_LIBRARIES})
    
@@ -109,7 +109,7 @@ macro(try_build_application)
    
     search_and_add_files_to_build_the_project()
     test_if_not_empty(source_files)
-    add_executable(${PROJECT_OUTPUT_NAME} ${source_files} ${header_files})
+    add_executable(${PROJECT_OUTPUT_NAME} ${source_files} ${header_files} ${ADDITIONAL_FILES})
 
     target_link_libraries(${PROJECT_OUTPUT_NAME} ${ADDITIONAL_LIBRARIES})
     
